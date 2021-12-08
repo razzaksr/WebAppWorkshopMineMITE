@@ -1,3 +1,4 @@
+<%@page import="core.mod.Companies"%>
 <%@page import="java.util.List"%>
 <%@page import="core.mod.Candidates"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,14 +14,20 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </head>
 <body>
-<% List<Candidates> all=(List<Candidates>)request.getAttribute("one"); %>
+<%response.addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	response.addHeader("Pragma", "no-cache");
+	response.addHeader("Expiry", "0");
+	if(session.getAttribute("logged")!=null){ %>
+<% List<Candidates> all=(List<Candidates>) request.getAttribute("one"); 
+Companies com=(Companies) request.getAttribute("com");%>
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
 		<div class="container-fluid">
-			<a href="#" class="navbar-brand"><img style="height:80px;width:150px" src="images/logo.png" alt="logo"></a>
+			<a href="#" class="navbar-brand">
+			<img src="images/dlithelogo.png" alt="logo"></a>
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#place">
 			<span class="navbar-toggler-icon"></span></button>
 			<div class="collapse navbar-collapse" id="place">
-				<ul class="navbar-nav ml-auto">
+				<ul class="navbar-nav ms-auto">
 					<li class="navbar-item active" id="menu-gap">
 						<a href="home.jsp" class="navbar-link btn btn-light badge-pill">Home</a>
 					</li>
@@ -43,10 +50,10 @@
 			</div>
 		</div>
 	</nav>
+	<h1 class="display-4 text-center text-uppercase">List of Candidates</h1>
 	
-	<p class="display-1">${sessionScope.logged}</p>
-	<h1 class="display-4 text-center">List of Candidates</h1>
-	<table class="table table-hover text-light bg-secondary rounded">
+	<div class="table-responsive-lg">
+		<table class="table table-hover rounded">
 		<thead class="text-light">
 			<tr>
 				<th>REgister Number</th><th>Name</th><th>Department</th><th>Year of Passedout</th>
@@ -73,13 +80,20 @@
 				<% }%>
 		</tbody>
 	</table>
+	</div>
+	
 	<%-- <a href="print?collect<%=all%>" class="col-12 btn btn-outline-dark badge-pill">Print Report</a> --%>
 	<div class="row text-center justify-content-center">
 		<form action="corpmail.jsp">
-			<%pageContext.setAttribute("tomail", all, PageContext.APPLICATION_SCOPE);%>
+			<%
+			pageContext.setAttribute("tomail", all, PageContext.APPLICATION_SCOPE);
+			pageContext.setAttribute("forcorp", com, PageContext.APPLICATION_SCOPE);
+			%>
 			<input type="submit" class="btn btn-outline-dark badge-pill" value="Send Notification">
 		</form>
 	</div>
-	
+	<%}else{
+	response.sendRedirect("index.jsp");
+	}%>
 </body>
 </html>

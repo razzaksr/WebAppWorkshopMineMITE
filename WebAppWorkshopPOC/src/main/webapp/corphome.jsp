@@ -20,13 +20,19 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </head>
 <body>
+<%response.addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	response.addHeader("Pragma", "no-cache");
+	response.addHeader("Expiry", "0");
+	if(session.getAttribute("logged")!=null){ %>
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
 		<div class="container-fluid">
-			<a href="#" class="navbar-brand"><img style="height:80px;width:150px" src="images/logo.png" alt="logo"></a>
+			<a href="#" class="navbar-brand">
+				<img style="height:80px;width:150px" src="images/dlithelogo.png" alt="logo">
+			</a>
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#place">
 			<span class="navbar-toggler-icon"></span></button>
 			<div class="collapse navbar-collapse" id="place">
-				<ul class="navbar-nav ml-auto">
+				<ul class="navbar-nav ms-auto">
 					<li class="navbar-item active" id="menu-gap">
 						<a href="home.jsp" class="navbar-link btn btn-light badge-pill">Home</a>
 					</li>
@@ -52,9 +58,8 @@
 
 <%List<Companies> all=(List<Companies>)request.getAttribute("every"); %>
 <div class="my-4 container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-sm-12">
-                <table class="table table-striped table-responsive-md table-responsive-sm table-bordered table-sm table-rounded">  
+            <div class="table-responsive-md">
+                <table class="table table-hover rounded">  
                     <thead class="thead-dark">
                         <tr>  
                             <th>Company name</th><th>Company Visiting date</th>
@@ -84,6 +89,9 @@
                 </table>
                </div>
                </div>
-               </div>
+              <%}else{
+	response.sendRedirect("index.jsp");
+	}%>
+               
 </body>
 </html>

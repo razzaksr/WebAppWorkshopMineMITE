@@ -5,21 +5,52 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Placement Buddy</title>
-<!-- CSS only -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<!-- JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container-fluid">
-	<h1 class="text-primary text-center display-4"> Zealous Placement Buddy </h1>
+	<div class="row justify-content-center">
+		<img src="images/dlithelogo.png" alt="dlithe" class="col-lg-3 col-sm-6">
+		<h1 class="col-lg-9 col-sm-6 text-center align-self-center text-primary text-uppercase"> DLithe Placement Buddy </h1>
+	</div>
 	<h5 class="text-danger">${requestScope.info}</h5>
-	
 		<!-- <hr class="my-4"> -->
-		<div class="row justify-content-center my-5">
-			<form class="form col-md-6 col-xm-12 p-3 shadow-lg rounded" action="authenticate" method="post">
+		<div class="row justify-content-center mt-3">
+			<div id="dlithe" class="carousel slide carousel-fade col-md-8 col-sm-12" data-bs-ride="carousel">
+			  <div class="carousel-indicators">
+			    <button type="button" data-bs-target="#dlithe" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			    <button type="button" data-bs-target="#dlithe" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			    <button type="button" data-bs-target="#dlithe" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			  </div>
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <img src="images/dslide1.jpg" style="height:460px" class="d-block w-100" alt="slide1">
+			      <div class="carousel-caption d-none d-md-block">
+			        <h5>Skill Development</h5>
+			        <p>Train people with industry standard</p>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <img src="images/dslide2.jpg" style="height:460px" class="d-block w-100" alt="slide2">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="images/dslide3.jpg" style="height:460px" class="d-block w-100" alt="slide3">
+			    </div>
+			  </div>
+			  <button class="carousel-control-prev" type="button" data-bs-target="#dlithe" data-bs-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Previous</span>
+			  </button>
+			  <button class="carousel-control-next" type="button" data-bs-target="#dlithe" data-bs-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Next</span>
+			  </button>
+			</div>
+			<form class="form col-md-4 col-sm-12 p-3 shadow-lg rounded align-self-center" action="authenticate" method="post">
+				<h1 class="text-center text-primary">Log Here</h1>
 				<div class="form-group">
 					<label for="user">User Name</label>
 					<input type="text" name="user" placeholder="Enter the username" class="form-control">
@@ -28,9 +59,9 @@
 					<label for="pass">Password</label>
 					<input type="password" name="pass" placeholder="Enter the password" class="form-control">
 				</div>
-				<div class="my-4 row justify-content-around">
-					<input type="submit" value="Login" class="btn btn-outline-success ">
-					<input type="reset" value="Clear" class="btn btn-outline-secondary ">
+				<div class="mt-4 row justify-content-around">
+					<button type="submit" class="col-3 btn btn-outline-success ">Login</button>
+					<button type="reset" class="col-3 btn btn-outline-secondary ">Clear</button>
 				</div>
 			</form>
 		</div>

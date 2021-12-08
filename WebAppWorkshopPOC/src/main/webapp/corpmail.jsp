@@ -1,3 +1,4 @@
+<%@page import="core.mod.Companies"%>
 <%@page import="javax.mail.Transport"%>
 <%@page import="java.util.Vector"%>
 <%@page import="javax.mail.Message"%>
@@ -17,7 +18,12 @@
 <title>Sending Emails</title>
 </head>
 <body>
+<%response.addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	response.addHeader("Pragma", "no-cache");
+	response.addHeader("Expiry", "0");
+	if(session.getAttribute("logged")!=null){ %>
 <%List<Candidates> can=(List<Candidates>)pageContext.getAttribute("tomail", PageContext.APPLICATION_SCOPE);
+Companies com =(Companies) pageContext.getAttribute("forcorp", PageContext.APPLICATION_SCOPE);
 List<String> mail=new Vector<String>();
 for(Candidates m:can)
 {
@@ -58,8 +64,8 @@ props.put("mail.smtp.host", "smtp.gmail.com");
    //message.addRecipient(Message.RecipientType.TO,new InternetAddress("razzaksr@gmail.com"));
    //message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("razzaksr@gmail.com"));
    message.setRecipients(Message.RecipientType.TO,ids);
-   message.setSubject("Test mail from zealous tech corp");
-   message.setText("Hello this is test mail");
+   message.setSubject("Interview Alert: Company - "+com.getOrg());
+   message.setText("Dear candidate, you have interview on "+com.getDate()+" for the company "+com.getOrg()+" offering the salary of "+com.getSalary()+" role of "+com.getRole()+".\nplease prepare well. \nWise people makes opportunity,Smart people grab the opportunity. All the best.");
    this.log("Message Composed for "+ids.toString());
    //jp.showMessageDialog(this, "Message sent successfully", "Sending mail", 1, null);
    //send message
@@ -78,13 +84,16 @@ props.put("mail.smtp.host", "smtp.gmail.com");
 	 */
    
    Transport.send(message);
-	 this.log("Message Sent for "+ids.toString());
-   System.out.println("Mail has sent");
+	this.log("Message Sent for "+ids.toString());
+   //System.out.println("Mail has sent");
 	response.sendRedirect("filterForCorps.jsp");
   } 
   catch (javax.mail.MessagingException e) 
   {
 	  //throw new RuntimeException(e);
 } %>
+<%}else{
+	response.sendRedirect("index.jsp");
+	}%>
 </body>
 </html>

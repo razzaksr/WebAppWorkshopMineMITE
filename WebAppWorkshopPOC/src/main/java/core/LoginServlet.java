@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 		String a=request.getParameter("user");
 		String b=request.getParameter("pass");
 		HttpSession session=request.getSession();
-		if(a.equalsIgnoreCase("zealous")&&b.equalsIgnoreCase("noonstack"))
+		if(a.equalsIgnoreCase("dlithe")&&b.equalsIgnoreCase("mite"))
 		{
 			RequestDispatcher dis=request.getRequestDispatcher("home.jsp");
 			session.setAttribute("logged", a);

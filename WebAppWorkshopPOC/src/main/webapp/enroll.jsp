@@ -5,12 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Enrolling new one to placement buddy</title>
-<!-- CSS only -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<!-- JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -19,13 +17,39 @@
 	response.addHeader("Expiry", "0");
 	if(session.getAttribute("logged")!=null){ %>
 		<p class="display-7 text-danger">${info}</p>
-	<p class="display-1">${sessionScope.logged}</p>
-	<!-- <div class="justify-conetnt-center"> -->
-		<a href="home.jsp" class="btn btn-outline-success">Home</a>
-		<a href="logout" class="btn btn-outline-danger">Logout</a>
-			<h1 class="display-4 text-primary text-center">Placement buddy enrollment</h1>
+	
+	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+		<div class="container-fluid">
+			<a href="#" class="navbar-brand"><img style="height:80px;width:150px" src="images/dlithelogo.png" alt="logo"></a>
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#place">
+			<span class="navbar-toggler-icon"></span></button>
+			<div class="collapse navbar-collapse" id="place">
+				<ul class="navbar-nav ms-auto">
+					<li class="navbar-item active" id="menu-gap">
+						<a href="home.jsp" class="navbar-link btn btn-light badge-pill">Home</a>
+					</li>
+					<li class="navbar-item" id="menu-gap">
+						<a href="corporateList" class="navbar-link btn btn-light badge-pill">Corp Home</a>
+					</li>
+					<li class="navbar-item" id="menu-gap">
+						<a href="#" class="navbar-link btn btn-light badge-pill">Enroll Candidate</a>
+					</li>
+					<li class="navbar-item" id="menu-gap">
+						<a href="find.jsp" class="navbar-link btn btn-light badge-pill">Find Candidate</a>
+					</li>
+					<li class="navbar-item" id="menu-gap">
+						<a href="viewall" class="navbar-link btn btn-light badge-pill">List Candidates</a>
+					</li>
+					<li class="navbar-item" id="menu-gap">
+						<a href="logout" class="navbar-link btn btn-light badge-pill">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+			<h1 class="display-4 text-primary text-center text-uppercase">Placement buddy enrollment</h1>
 			<div class="row justify-content-center">
-				<form class="form text-primary p-3 border border-light shadow-lg rounded" action="feed" method="post">
+				<form class="form text-primary col-lg-8 col-md-12 p-3 border border-light shadow-lg rounded" action="feed" method="post">
 					<div class="form group">
 						<label for="regno">Register Number</label>
 						<input type="number" name="regno" class="form-control" placeholder="REgister Number">
@@ -37,9 +61,9 @@
 					<div class="form-checked">
 						<div class="form-inline">
 							<label for="gender">Select Gender</label>
-							<input type="radio" name="gender" value="male" class="form-control" style="margin:4px; margin-left: 30px">Male
-							<input type="radio" name="gender" value="female" class="form-control" style="margin-left: 30px">Female
-							<input type="radio" name="gender" value="other" class="form-control" style="margin-left: 30px">Other
+							<input type="radio" name="gender" value="male" class="form-check-input" style="margin:4px; margin-left: 30px">Male
+							<input type="radio" name="gender" value="female" class="form-check-input" style="margin-left: 30px">Female
+							<input type="radio" name="gender" value="other" class="form-check-input" style="margin-left: 30px">Other
 						</div>
 					</div>
 					<div class="form group">
@@ -81,10 +105,10 @@
 					<div class="form-checked">
 						<div class="form-inline">
 							<label for="interest">Select your career</label>
-							<input type="radio" name="interest" value="it" class="form-control" style="margin:4px; margin-left: 30px">IT
-							<input type="radio" name="interest" value="core" class="form-control" style="margin-left: 30px">Core
-							<input type="radio" name="interest" value="higher_studies" class="form-control" style="margin-left: 30px">Higher Studies
-							<input type="radio" name="interest" value="not_interested" class="form-control" style="margin-left: 30px">Not Interested
+							<input type="radio" name="interest" value="it" class="form-check-input" style="margin:4px; margin-left: 30px">IT
+							<input type="radio" name="interest" value="core" class="form-check-input" style="margin-left: 30px">Core
+							<input type="radio" name="interest" value="higher_studies" class="form-check-input" style="margin-left: 30px">Higher Studies
+							<input type="radio" name="interest" value="not_interested" class="form-check-input" style="margin-left: 30px">Not Interested
 						</div>
 					</div>
 					<div class="form group">
@@ -95,9 +119,9 @@
 						<label for="placed">Placed concerns</label>
 						<input type="text" name="placed" class="form-control" placeholder="Placed concerns">
 					</div> -->
-					<div class="my-4 row justify-content-around">
-						<input type="submit" value="Enroll" class="btn btn-outline-dark">
-						<input style="margin-left: 300px;" type="reset" value="Clean" class="btn btn-outline-secondary">
+					<div class="mt-4 row justify-content-around">
+						<button type="submit" class="col-4 btn btn-outline-dark">Enroll</button>
+						<button type="reset" class="col-4 btn btn-outline-secondary">Clear</button>
 					</div>
 				</form>
 			</div>

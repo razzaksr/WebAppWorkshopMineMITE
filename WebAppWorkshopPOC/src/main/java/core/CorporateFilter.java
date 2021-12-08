@@ -87,6 +87,7 @@ public class CorporateFilter extends HttpServlet {
 		catch(SQLException sq){}
 		RequestDispatcher dis=request.getRequestDispatcher("filtered.jsp");
 		request.setAttribute("one", all);
+		request.setAttribute("com", com);
 		dis.forward(request, response);
 	}
 
