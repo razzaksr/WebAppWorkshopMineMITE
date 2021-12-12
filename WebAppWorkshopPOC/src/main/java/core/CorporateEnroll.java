@@ -45,7 +45,7 @@ public class CorporateEnroll extends HttpServlet {
 		String date=request.getParameter("date");
 		int req=Integer.parseInt(request.getParameter("required"));
 		String role=request.getParameter("role");
-		double sal=Double.parseDouble(request.getParameter("required"));
+		double sal=Double.parseDouble(request.getParameter("salary"));
 		// db connection
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");

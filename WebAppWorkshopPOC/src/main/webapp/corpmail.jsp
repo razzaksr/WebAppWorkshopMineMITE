@@ -30,7 +30,7 @@ for(Candidates m:can)
 	mail.add(m.getEmail());
 }
 
-String frm="zealoustechcorptest@gmail.com",pss="testcorptechzealous";
+String frm="razakmohameddlithe@gmail.com",pss="dlithemohamedrazak";
 Properties props = new Properties();
 props.put("mail.smtp.auth", "true");
 props.put("mail.smtp.starttls.enable", "true");

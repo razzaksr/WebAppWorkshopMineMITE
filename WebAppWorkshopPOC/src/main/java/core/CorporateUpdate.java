@@ -46,7 +46,7 @@ public class CorporateUpdate extends HttpServlet {
 		int tak=Integer.parseInt(request.getParameter("taken"));
 		int req=Integer.parseInt(request.getParameter("required"));
 		String role=request.getParameter("role");
-		double sal=Double.parseDouble(request.getParameter("required"));
+		double sal=Double.parseDouble(request.getParameter("salary"));
 		// db connection
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
